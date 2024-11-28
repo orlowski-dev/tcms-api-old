@@ -1,0 +1,145 @@
+@host=localhost
+@port=8000
+
+###
+
+GET http://{{host}}:{{port}}/api/v1/users
+Accept: application/json
+
+###
+
+GET http://{{host}}:{{port}}/api/v1/users?name[eq]=Patryk Orłowski&includeRole=true
+Accept: application/json
+
+###
+
+GET http://{{host}}:{{port}}/api/v1/users?includeRole=true&includeProfile=true
+Accept: application/json
+
+###
+
+GET http://{{host}}:{{port}}/api/v1/users/1
+Accept: application/json
+
+###
+
+GET http://{{host}}:{{port}}/api/v1/users/21?includeRole=true&includeProfile=true
+Accept: application/json
+
+###
+
+POST http://{{host}}:{{port}}/api/v1/users
+Accept: application/json
+Content-Type: application/json
+
+{
+  "roleId": 2,
+  "name": "Patryk Orlowski",
+  "email": "orlowski.dev@example.com",
+  "password": "superSecr3t"
+}
+
+###
+
+PUT http://{{host}}:{{port}}/api/v1/users/21
+Accept: application/json
+Content-Type: application/json
+
+{
+  "roleId": 2,
+  "name": "Patryk Orłowski",
+  "email": "orlowski.dev@example.com"
+}
+
+###
+
+PATCH http://{{host}}:{{port}}/api/v1/users/21
+Accept: application/json
+Content-Type: application/json
+
+{
+  "roleId": 5,
+  "email": "orlowski.dev@gmail.com"
+}
+
+###
+
+DELETE http://{{host}}:{{port}}/api/v1/users/1
+Accept: application/json
+
+###
+
+GET http://{{host}}:{{port}}/api/v1/profiles/21
+Accept: application/json
+
+###
+
+PUT http://{{host}}:{{port}}/api/v1/profiles/21
+Accept: application/json
+Content-Type: application/json
+
+{
+  "phoneNumber": "123 456 789",
+  "address": null,
+  "city": "Warsaw",
+  "postalCode": "00-001"
+}
+
+###
+
+PATCH http://{{host}}:{{port}}/api/v1/profiles/21
+Accept: application/json
+Content-Type: application/json
+
+{
+  "address": "Wesoła 1/1"
+}
+
+// roles
+
+###
+
+GET http://{{host}}:{{port}}/api/v1/roles
+Accept: application/json
+
+###
+
+GET http://{{host}}:{{port}}/api/v1/roles/1
+Accept: application/json
+
+###
+
+POST http://{{host}}:{{port}}/api/v1/roles
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "IT",
+  "abilities": "system:update"
+}
+
+###
+
+PUT http://{{host}}:{{port}}/api/v1/roles/5
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "IT",
+  "abilities": "system:manage"
+}
+
+###
+
+PATCH http://{{host}}:{{port}}/api/v1/roles/5
+Accept: application/json
+Content-Type: application/json
+
+{
+  "abilities": "system:update"
+}
+
+###
+
+DELETE http://{{host}}:{{port}}/api/v1/roles/5
+Accept: application/json
